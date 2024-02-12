@@ -10,12 +10,13 @@ class Solution(object):
             "{": "}",
             "(": ")",
         }
-        for char in s:
-            if char in parenMap.keys():
-                stack.append(char)
+        for c in s:
+            if c in parenMap.keys():
+                stack.append(c)
             else:
-                if stack[len(stack) - 1] == parenMap[char]:
+                if len(stack) > 0 and parenMap[stack[-1]] == c:
                     stack.pop()
                 else:
                     return False
-        return True
+
+        return len(stack) == 0
